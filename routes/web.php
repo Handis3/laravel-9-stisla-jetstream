@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\pengunjungController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,11 @@ Route::get('/', function () {
 
 Route::group([ "middleware" => ['auth:sanctum', config('jetstream.auth_session'), 'verified'] ], function() {
     Route::view('/dashboard', "dashboard")->name('dashboard');
-
     Route::get('/user', [ UserController::class, "index_view" ])->name('user');
     Route::view('/user/new', "pages.user.user-new")->name('user.new');
     Route::view('/user/edit/{userId}', "pages.user.user-edit")->name('user.edit');
+    Route::resource('pengunjung', pengunjungController::class);
+// Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+    
+// });
 });

@@ -8,14 +8,15 @@ $links = [
     [
         "href" => [
             [
-                "section_text" => "User",
+                "section_text" => "Kelola Data  ",
                 "section_list" => [
                     ["href" => "user", "text" => "Data User"],
+                    ["href" => "user", "text" => "Data Pengunjung"],
                     ["href" => "user.new", "text" => "Buat User"]
                 ]
             ]
         ],
-        "text" => "User",
+        "text" => "Data",
         "is_multi" => true,
     ],
 ];
@@ -37,7 +38,7 @@ $navigation_links = array_to_object($links);
             <li class="menu-header">{{ $link->text }}</li>
             @if (!$link->is_multi)
             <li class="{{ Request::routeIs($link->href) ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route($link->href) }}"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a class="nav-link" href="{{ route($link->href) }}"><i class='bx bxs-dashboard'></i></i><span>Dashboard</span></a>
             </li>
             @else
                 @foreach ($link->href as $section)
